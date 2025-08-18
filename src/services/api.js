@@ -25,7 +25,6 @@ export const fetchMovies = async (query, page = 1) => {
 };
 
 export const fetchMovie = async (movieId) => {
-    console.log("API id: ", movieId);
     try {
         const response = await api.get(`/movie/${movieId}`, {
             params: {

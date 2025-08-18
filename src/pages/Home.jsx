@@ -4,6 +4,7 @@ import { fetchMovies, fetchPopMovies } from "../services/api.js";
 import SearchBar from "../components/SearchBar.jsx";
 import Pagination from "../components/Pagination.jsx";
 import MoviesIndex from "../components/MoviesIndex.jsx";
+import FavoriteTab from "../components/FavoriteTab.jsx";
 
 import "../App.css";
 
@@ -13,7 +14,6 @@ function Home() {
     const [error, setError] = useState(null);
     const [totalPages, setTotalPages] = useState(0);
     const [totalResults, setTotalResults] = useState(0);
-    console.log("Home movies: ", movies);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ function Home() {
     }, [query, page]);
 
     const handleSearch = (searchQuery) => {
-        navigate(`/?query=${encodeURIComponent(searchQuery)}&page=0`);
+        navigate(`/?query=${encodeURIComponent(searchQuery)}&page=1`);
     };
 
     const handlePageChange = (newPage) => {
@@ -65,20 +65,38 @@ function Home() {
             <SearchBar onSearch={handleSearch} />
             {query && !loading && !error && (
                 <>
-                    {totalResults > 0
-                        ? `Encontrados ${totalResults} resultados para "${query}"`
-                        : `Nenhum resultado encontrado para "${query}"`}
+                    {totalResults > 0 ? (
+                        <span id="search-results">
+                            Encontrados {totalResults} resultados para {query}
+                        </span>
+                    ) : (
+                        <span id="search-results">
+                            Nenhum resultado encontrado para {query}
+                        </span>
+                    )}
                 </>
             )}
 
-            {!query && !loading && !error && <h1>Filmes Populares</h1>}
-            <div id="movie-list">
+            <div id="movie-index">
                 {loading ? (
                     <p>Carregando...</p>
                 ) : error ? (
                     <p>Erro ao carregar os filmes</p>
                 ) : (
                     <>
+                        {FavoriteTab && !query && !loading && !error && (
+                            <>
+                                <div>
+                                    <h1 id="fav-movies">Meus Favoritos</h1>
+                                </div>
+                                <FavoriteTab movies={movies} />
+                            </>
+                        )}
+                        {!query && !loading && !error && (
+                            <div>
+                                <h1 id="pop-movies">Filmes Populares</h1>
+                            </div>
+                        )}
                         <MoviesIndex movies={movies} />
                         {totalPages > 1 && (
                             <Pagination

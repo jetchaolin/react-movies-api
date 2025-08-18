@@ -7,7 +7,7 @@ const DetailsCard = ({ movie }) => {
         : null;
 
     return (
-        <Link to={`/movie/${movie.id}`}>
+        <Link id="details-card" to={`/movieDetails/${movie.id}`}>
             {posterUrl ? (
                 <img src={posterUrl} alt={movie.title} />
             ) : (

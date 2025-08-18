@@ -1,33 +1,36 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchMovie } from "../services/api.js";
+import { toggleFavorite, favoriteArray } from "../services/favoriteService.js";
 import {
     renderMovieGenre,
     renderMovieCast,
     renderMovieOriginalName,
-    renderMovieHomepage,
+    renderMovieRating,
+    renderMovieDirector,
 } from "../utils/frontendData.jsx";
+import FavoriteButton from "../components/FavoriteButton.jsx";
 
 function MovieDetails() {
     const { id } = useParams();
-    console.log("ID: ", id);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [movie, setMovie] = useState(null);
+    const [isExpanded, setIsExpanded] = useState(false);
 
+    const toggleExpanded = () => {
+        setIsExpanded(!isExpanded);
+    };
     useEffect(() => {
         async function getMovieDetails(id) {
-            console.log("test get movie details");
             try {
                 setLoading(true);
                 setError(null);
 
                 const response = await fetchMovie(id);
                 setMovie(response);
-                console.log("Movie Details: ", response);
             } catch (err) {
-                setError("Não foi possível achar o filme");
-                console.log("Error fetching movie details", err);
+                setError("Não foi possível achar o filme", err);
             } finally {
                 setLoading(false);
             }
@@ -35,6 +38,10 @@ function MovieDetails() {
 
         getMovieDetails(id);
     }, [id]);
+
+    const handleCheckboxChange = () => {
+        toggleFavorite(movie);
+    };
 
     return (
         <>
@@ -54,12 +61,23 @@ function MovieDetails() {
                         <div id="title-description">
                             <h1>{movie.title}</h1>
                             {renderMovieOriginalName(movie)}
+                            {renderMovieDirector(movie)}
                             {renderMovieGenre(movie)}
-                            {renderMovieCast(movie)}
-                            {/* {renderMovieHomepage(movie)} */}
+                            {renderMovieRating(movie)}
+                            <FavoriteButton
+                                movie={movie}
+                                favoriteArray={favoriteArray}
+                                onFavoriteChange={() => {
+                                    handleCheckboxChange(movie);
+                                }}
+                            />
                             <p>
                                 <strong>Resumo:</strong> {movie.overview}
                             </p>
+                            {renderMovieCast(movie, isExpanded)}
+                            <button id="cast-expand" onClick={toggleExpanded}>
+                                {isExpanded ? "Mostrar menos" : "Mostrar mais"}
+                            </button>
                         </div>
                     </section>
 
