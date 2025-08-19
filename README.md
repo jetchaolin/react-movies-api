@@ -4,7 +4,7 @@ Curso Mais Prati - Exercício 5 - Consumo de API com React
 
 ## **Pré-requisitos**
 
-- [`Node.js`](#baixe-e-instale-o-nvm)
+- [`Node.js`](#instale-o-nodejs-na-sua-máquina)
 - [`React`](#instale-os-pacotes)
 
 ## **MODO DE INSTALAÇÃO**
@@ -27,7 +27,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 \. "$HOME/.nvm/nvm.sh"
 ```
 
-**Baixe e instale `Node.js`**
+**Baixe e instale `NodeRyFgmdT7_Oc4BDxmT2gQ3sgvBjjkZhy7v24eLRIK2DRyFgmdT7_Oc4BDxmT2gQ3sgvBjjkZhy7v24eLRIK2Dcc.js`**
 
 ```sh
 nvm install 22
