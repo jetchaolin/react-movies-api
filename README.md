@@ -1,13 +1,74 @@
-# React + Vite
+# React Movies API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Curso Mais Prati - Exercício 5 - Consumo de API com React
 
-Currently, two official plugins are available:
+## **Pré-requisitos**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [`Node.js`](#baixe-e-instale-o-nvm)
+- [`React`](#instale-os-pacotes)
 
-## Expanding the ESLint configuration
+## **MODO DE INSTALAÇÃO**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# react-movies-api
+### Instale o `Node.js` na sua máquina
+
+#### 1. Você pode baixar o `Node.js` no [site-do-nodejs](https://nodejs.org/en/download/) e instalar na sua máquina
+
+#### 2. Ou você pode utilizar o gerenciador de pacotes `nvm` para isso
+
+**Baixe e instale o `nvm`**
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+```
+
+**Reinicie o `shell`**
+
+```sh
+\. "$HOME/.nvm/nvm.sh"
+```
+
+**Baixe e instale `Node.js`**
+
+```sh
+nvm install 22
+```
+
+**Verifique a versão do `Node.js`**
+
+```sh
+node -v # "v22.15.0".
+nvm current # "v22.15.0".
+```
+
+**Verifique a versão do `npm`**
+
+```sh
+npm -v
+```
+
+### Baixe o repositório com o APP
+
+```bash
+# Clona o repositório para sua máquina
+
+git clone https://github.com/jetchaolin/react-movies-api.git # Https
+
+git clone git@github.com:jetchaolin/react-movies-api.git # Ssh
+```
+
+## **Instale os pacotes**
+
+```sh
+# Navegue até a pasta do APP no seu terminal
+cd <react-movies-api>
+# Instale as dependências
+npm install
+```
+
+## **Rode o APP**
+
+```sh
+npm run dev
+```
+
+Acesse o APP na url `http://localhost:5173/`
