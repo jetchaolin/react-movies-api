@@ -13,7 +13,7 @@ Curso Mais Prati - Exercício 5 - Consumo de API com React
 
 #### 1. Você pode baixar o `Node.js` no [site-do-nodejs](https://nodejs.org/en/download/) e instalar na sua máquina
 
-#### 2. Ou você pode utilizar o gerenciador de pacotes `nvm` para isso
+#### 2. Ou você pode utilizar o gerenciador de versões `nvm` para isso
 
 **Baixe e instale o `nvm`**
 
